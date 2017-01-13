@@ -5,7 +5,11 @@
 
 ⛑ Work in Progress ⛑
 
-This is a brief overview of how to use JSON Web Tokens PLUS an OAuth flow to authenticate users in a Node app. Generally speaking, the flow looks like this:
+This is a brief overview of how to use JSON Web Tokens (https://jwt.io/), along with an OAuth partner like Facebook, Twitter, etc., to authenticate users in a Node app. This is a powerful authentication schema: it's extremely secure, it's generally simple for users because they don't have to create new accounts and sign in (assuming they use the OAuth partner), and it's easy to manage (no passwords or auth credentials at all). 
+
+(Side note: Alternatively, you could use JWTs alongside a typical password schema as well. A topic for a different walkthrough.)
+
+Generally speaking, the flow looks like this:
 
 ```
 1. User comes to your app and clicks OAuth sign in button.
@@ -14,10 +18,16 @@ This is a brief overview of how to use JSON Web Tokens PLUS an OAuth flow to aut
 4. User is redirected by OAuth partner back to YOU redirect URI (which was given to OAuth partner upon setup), WITH some identifying information (typically an access token, user id, etc.)
 5. Take that identifying information and:
   5a. Save it to your database (as appropriate or needed). 
-  5b. Create a JSON Web Token for that user and issue it to the client (in the form of a cookie, or web storage). 
+  5b. Create a JSON Web Token for that user and issue it to the client (in the form of a cookie, or web storage), along with any other user-specific information the client needs to display.
 ```
 
-The user is now signed in. All incoming requests can be authenticated by grabbing the JSON Web Token (which is either automatically passed along in the HTTP request if it's a cookie, OR it's manually included in your request, typically in a `BEARER` header). 
+The user is now signed in. All incoming requests can be authenticated by:
+```
+1. Grabbing the JSON Web Token off incoming requests (which is either automatically passed along in the HTTP request if it's a cookie, OR it's manually included in your request, typically in a `BEARER` header)
+2. Decoding it using the "secret" that you used to create it.
+3. Confirming that there is user data there. 
+```
+That's it. If it's not a JWT that was created with _your_ secret, then it won't decode, and you'll know you aren't dealing with an authenticated user. In this case, you can redirect them to the OAuth URI and follow the same flow to authenticate them (or reauthenticate them) as we outlined in the beginning (simply without Step 1, because you're routing them manually). 
 
 
 
