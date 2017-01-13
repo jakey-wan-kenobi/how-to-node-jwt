@@ -62,6 +62,6 @@ Then copy and paste the output and put it into your environment variable.
 It's very import that you don't share, commit, or expose your JWT secret in client side code. A decoded JWT can be used by an attacked to gain access to your system.
 
 #### The Data You Encode is Visisble to EVERYONE
-The user data that you encode into the JWT is actually NOT private. You do NOT need your JWT secret to access it. For proof, paste your encoded JWT (the output of `prepareJWTForBrowser` above), into this: https://jwt.io/.
+The user data that you encode into the JWT (the `userData` const in the `prepareJWTForBrowser` function, for example) is actually NOT private. You do NOT need your JWT secret to access it. For proof, paste your encoded JWT (the output of `prepareJWTForBrowser` above), into this: https://jwt.io/.
 
 That said, you should never store sensitive information inside it. It's simply used to match the authorized user to some data you can use to identify them.
