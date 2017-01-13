@@ -1,7 +1,7 @@
-# How to Use JSON Web Tokens + OAuth as your Auth Schema in Node
+# JSON Web Tokens & OAuth in Node
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-
+> How to use JSON Web Tokens with OAuth as a complete authentication schema for Node
 
 ⛑ Work in Progress ⛑
 
