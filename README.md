@@ -9,24 +9,33 @@ This is a brief overview of how to use JSON Web Tokens (https://jwt.io/), along 
 
 (Side note: Alternatively, you could use JWTs alongside a typical password schema as well. A topic for a different walkthrough.)
 
-Generally speaking, the flow looks like this:
+## Auth Flow Outline
 
+### OAuth Flow
+To use an OAuth schema, you need to register your app with the OAuth partner see (Facebook)[https://developers.facebook.com/docs/facebook-login/web], for example). 
 ```
 1. User comes to your app and clicks OAuth sign in button.
 2. Send user to OAuth partner (with specific URL given to you by OAuth partner upon setup).
 3. At OAuth partner's site, user grants permission for you to access their partner data.
 4. User is redirected by OAuth partner back to YOU redirect URI (which was given to OAuth partner upon setup), WITH some identifying information (typically an access token, user id, etc.)
+```
+
+### JWT creation 
+After step 4 above, your user is a confirmed, identified user, and you'll get their identifying information along with the incoming redirect/request. Since we've identified the user successfully, it's safe to create a JWT for that user. This JWT will be sent to the client, and included in every request sent from that client to your server (so you can decode it and figure out who they are). 
+```
 5. Take that identifying information and:
   5a. Save it to your database (as appropriate or needed). 
   5b. Create a JSON Web Token for that user and issue it to the client (in the form of a cookie, or web storage), along with any other user-specific information the client needs to display.
 ```
 
+### Checking auth state on incoming requests
 The user is now signed in. All incoming requests can be authenticated by:
 ```
 1. Grabbing the JSON Web Token off incoming requests (which is either automatically passed along in the HTTP request if it's a cookie, OR it's manually included in your request, typically in a `BEARER` header)
 2. Decoding it using the "secret" that you used to create it.
 3. Confirming that there is user data there. 
 ```
+
 That's it. If it's not a JWT that was created with _your_ secret, then it won't decode, and you'll know you aren't dealing with an authenticated user. In this case, you can redirect them to the OAuth URI and follow the same flow to authenticate them (or reauthenticate them) as we outlined in the beginning (simply without Step 1, because you're routing them manually). 
 
 
