@@ -14,9 +14,10 @@
 <p align="center">
 <a align="center" href="http://standardjs.com/"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="Standard"></a>
 <br>
+<br>
+<br>
 ⛑ Work in Progress ⛑
 </p>
-<br>
 
 
 This is a brief overview of how to use JSON Web Tokens (https://jwt.io/), along with an OAuth partner like Facebook, Twitter, etc., to authenticate users in a Node app. This is a powerful authentication schema: it's extremely secure, it's generally simple for users because they don't have to create new accounts and sign in (assuming they use the OAuth partner), and it's easy to manage (no passwords or auth credentials at all). 
