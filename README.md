@@ -1,4 +1,7 @@
 <h1 align="center">
+  <a href="https://oauth.net/"><img src="https://g.twimg.com/dev/documentation/image/oauth.png" alt="OAuth" width="200"></a>
+  <a href="https://nodejs.org/en/"><img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png" alt="Node" width="200"></a>
+  
   <br>
   JSON Web Tokens &amp; OAuth in Node
   <br>
