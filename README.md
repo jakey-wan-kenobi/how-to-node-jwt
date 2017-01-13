@@ -1,7 +1,25 @@
-# how-to-node-jwt
-🔑 A quick walkthrough on using JSON Web Tokens in Node for authentication.
+# How to Use JSON Web Tokens + OAuth as your Auth Schema in Node
+
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 
 ⛑ Work in Progress ⛑
+
+This is a brief overview of how to use JSON Web Tokens PLUS an OAuth flow to authenticate users in a Node app. Generally speaking, the flow looks like this:
+
+```
+1. User comes to your app and clicks OAuth sign in button.
+2. Send user to OAuth partner (with specific URL given to you by OAuth partner upon setup).
+3. At OAuth partner's site, user grants permission for you to access their partner data.
+4. User is redirected by OAuth partner back to YOU redirect URI (which was given to OAuth partner upon setup), WITH some identifying information (typically an access token, user id, etc.)
+5. Take that identifying information and:
+  5a. Save it to your database (as appropriate or needed). 
+  5b. Create a JSON Web Token for that user and issue it to the client (in the form of a cookie, or web storage). 
+```
+
+The user is now signed in. All incoming requests can be authenticated by grabbing the JSON Web Token (which is either automatically passed along in the HTTP request if it's a cookie, OR it's manually included in your request, typically in a `BEARER` header). 
+
+
 
 
 
