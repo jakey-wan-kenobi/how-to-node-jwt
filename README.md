@@ -47,7 +47,7 @@ decodeJWT()
 
 What's a JWT secret? It's any string, really. You must use the same string to encode and decote your JWTs.
 
-I recommend going into a terminal and generating a 256 byte string, like this (Node must be installed):
+I recommend going into a terminal and generating a 256 bit string, like this (Node must be installed):
 
 ```
 node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
