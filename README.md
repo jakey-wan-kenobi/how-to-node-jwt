@@ -12,7 +12,7 @@ This is a brief overview of how to use JSON Web Tokens (https://jwt.io/), along 
 ## Auth Flow Outline
 
 ### OAuth Flow
-To use an OAuth schema, you need to register your app with the OAuth partner see (Facebook)[https://developers.facebook.com/docs/facebook-login/web], for example). 
+To use an OAuth schema, you need to register your app with the OAuth partner (see [Facebook](https://developers.facebook.com/docs/facebook-login/web), for example). When registering your app, they'll give you a URL to direct users to to authenticate them. And you'll give THEM a redirect URL, which is where they'll be sending them back after the user approves your app. 
 ```
 1. User comes to your app and clicks OAuth sign in button.
 2. Send user to OAuth partner (with specific URL given to you by OAuth partner upon setup).
